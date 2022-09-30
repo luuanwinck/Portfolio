@@ -1,27 +1,77 @@
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
 }
 body{
-    width: 100%;
-    height: 100%;
+    position: absolute; top:0; left:0;
+    width: 100vw; min-height: 100vh;   
     background-color: lightgrey;
-    background-image: linear-gradient(30deg, lightgrey 15%, lightgrey 20%, rgb(115, 170, 167) 35%,lightseagreen 60%);
 }
+.wrapper{
+    width: 100%; height:100%;
+}
+
+.no-words-break{white-space: nowrap;}
+.brd-m-black{border: 3px solid black;}
+.brd-none{ border:none; }
+
+.aside section.text{ padding: 10px;}
+
+.container.triple .picture-aside {
+    background-color: transparent;
+}
+
+
+
+
+/*GRID === GRID === GRID === GRID === GRID*/
 .container{
+    background-image: linear-gradient(30deg, lightgrey 15%, lightgrey 20%, rgb(115, 170, 167) 35%,lightseagreen 60%);
+    position: absolute;
+    top:0; left:0;
+    min-height: 100%;    width: 100%;
     display: grid;
-    height: 100vh;
-    width: 100%;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 0.2fr 1.8fr;
-    grid-template-areas: "nav nav"
-                         "main aside";
     font-family: 'Noto Sans Mono', monospace;
 }
-#nav{
+
+.container.double{
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 80px auto;
+    grid-template-areas: "nav nav"
+                         "main aside";
+}
+.container.double header{ grid-area: nav;   }
+.container.double main{   grid-area: main;  }
+.container.double aside{  grid-area: aside; }
+
+.container.unique{
+    grid-template-columns: 100%;
+    grid-template-rows: 80px auto;
+    grid-template-areas: "nav"
+                         "main";    
+}
+.container.unique header{ grid-area: nav;   }
+.container.unique main{   grid-area: main;  }
+
+.container.triple{
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 80px auto auto;
+    grid-template-areas: "nav nav"
+                         "asideOne main"
+                         "asideTwo asideTwo";    
+}
+.container.triple header{ grid-area: nav;   }
+.container.triple main{   grid-area: main;  }
+.container.triple aside:nth-of-type(1){grid-area: asideOne;}
+.container.triple aside:nth-of-type(2){grid-area: asideTwo;}
+
+
+
+
+/*HEADER === HEADER === HEADER === HEADER === HEADER*/
+.header.wrapper{
     display: flex;
     justify-content: space-between;
-    grid-area: nav;
 }
 #logo{
     display: flex;
@@ -58,55 +108,147 @@ body{
     border-bottom: 3px solid white;
     color: rgb(249, 252, 255);
 }
-#main{
-    grid-area: main;
-    margin: 30px 10px 30px 10px;
-}
-#artigo{
-    margin: 120px 10px 10px 10px;
-}
-#artigo p{
+
+
+
+
+/*MAIN === MAIN === MAIN === MAIN === MAIN*/
+.main.wrapper{ padding: 30px 10px 30px 10px; }
+.main.wrapper section.text{    margin: 70px 10px 10px 10px;}
+section.text p{
     font-size: 16px;
     color: rgb(80, 83, 85);
 }
-#artigo h2{
+section.text p{color: rgb(50, 53, 55); font-weight: bold;}
+section.text h2,section.text h2 span{
     font-size: 26px;
     color: rgb(61, 66, 72)
 }
-#artigo h3{
+section.text h3,section.text h3 span{
     font-size: 22px;
-    color: rgb(41, 171, 165);
+    color: #29aba5;
 }
-#artigo span{
+section.text span{
     font-size: 18px;
     color: rgb(54, 55, 56);
 }
-#icon {
+section#image{
+    width:100%; height: calc(100% - 50px);
+}
+section#links {
     display: flex;
     justify-content: start;
     margin: 25px 10px 0 10px;
 }
-#icon img{
+section#links img{
     margin: 5px 10px 5px 5px;
     width: 30px;
     height: 30px;
 }
-#icon img:hover{
+section#links img:hover{
     -webkit-transform: scale(1.3);
     -ms-transform: scale(1.3);
     transform: scale(1.3);
 }
-#aside{
-    grid-area: aside;
-    border: 3px solid black;
-    margin: 30px 10px 30px 10px;
+
+.triple section#links{
+    justify-content: center;
+}
+
+
+/*MAIN === MAIN === MAIN === MAIN === MAIN*/
+.aside.wrapper{
+    padding: 30px 10px 30px 10px;
+}
+.picture-aside {
+    position: relative;
+    display:block;
+    height: 100%; width: 100%;
     background-color: lightseagreen;
 }
-#img {
-    height: 630px;
-    margin: 30px 10px 0 10px;
+
+.picture-aside img{
+    position:absolute;
+    max-width: 100%; max-height: 100%;
+    top: 50%; left:50%;
+    transform: translate(-50%, -50%);
 }
-#img img{
-    height: 590px;
-    margin: 40px 5px 0 5px;
+
+
+
+
+@media screen and (max-width:760px){
+    .container.double{
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50px calc(100% - 50px);
+    }
+    #logo a{
+        font-size: 16px;
+        padding: 5px;
+    }
+    #menu a{
+        font-size: 16px;
+        white-space: nowrap;
+    }
+    .main.wrapper{   padding: 10px 10px 30px 10px; }
+    section.text{ margin: 30px 10px 10px 10px; }
 }
+
+@media screen and (max-width:640px){
+    
+    .container.triple{
+        grid-template-columns: 100%;
+        grid-template-rows: 80px auto 300px auto;
+        grid-template-areas:
+            "nav" "asideOne" "main" "asideTwo";    
+    }
+    section.text p,section.text span{
+        font-size: 0.95em;
+    }
+    
+    section.text h2,section.text h2 span{ color: #e7e2e1; }
+    section.text h2{
+        font-size: 1.5em;
+        text-shadow: 2px 1px 4px black,
+            -1px -0px 2px white;
+    }
+    section.text h3, section.text h3 span{ color: #2cd8cf}
+    section.text h3{
+        font-size: 1.5em;
+        text-shadow: 2px 1px 3px black,
+            -0px -0px 1px white;
+    }
+}
+@media screen and (max-width:440px){
+    .header.wrapper{
+        flex-wrap: wrap;
+        justify-content:  center;
+    }
+    div#logo a{
+        box-shadow: 1px 0 3px black;
+    }
+}
+
+@media screen and (min-width: 1000px){
+    .container.triple{
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 80px auto auto;
+        grid-template-areas:
+            "nav nav"
+            "asideOne main"
+            "asideTwo main";
+    }
+    .container.triple .picture-aside img{
+        top: 46%; left:50%;
+        transform: translate(-50%, -50%);
+    }
+    .container.triple section#image{
+        width:100%; height: calc(100% - 90px);
+    }
+    .container.triple section#links{
+        padding-top: -50px;
+    }
+}
+/*
+rgb(41, 171, 165);#29aba5
+*/

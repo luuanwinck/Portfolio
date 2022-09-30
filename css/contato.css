@@ -1,84 +1,12 @@
-* {
-    margin: 0;
-    padding: 0;
-}
 
-body {
-    width: 100%;
-    height: 100%;
-    background-color: lightgrey;
-    background-image: linear-gradient(30deg, lightgrey 15%, lightgrey 20%, rgb(115, 170, 167) 35%, lightseagreen 60%);
-}
-
-.container {
-    display: grid;
-    height: 100vh;
-    width: 100%;
-    grid-template-columns: 1fr;
-    grid-template-rows: 0.2fr 1.8fr;
-    grid-template-areas: "nav nav"
-                         "main main";
-    font-family: 'Noto Sans Mono', monospace;
-}
-
-#nav {
-    display: flex;
-    justify-content: space-between;
-    grid-area: nav;
-}
-
-#logo {
-    display: flex;
-    align-items: center;
-}
-
-#logo a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 5px;
-    margin-left: 15px;
-    padding: 10px;
-    border: 0 solid black;
-    border-radius: 10px;
-    background-color: rgb(71, 185, 179);
-}
-
-#logo a:hover {
-    background-color: lightseagreen;
-}
-
-#menu {
-    display: flex;
-    align-items: center;
-    margin-right: 20px;
-}
-
-#menu a {
-    color: rgb(245, 241, 241);
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    margin: 0 10px 0 15px;
-}
-
-#menu a:hover {
-    border-bottom: 3px solid white;
-    color: rgb(249, 252, 255);
-}
-main{
-    grid-area: main;
-    display: flex;
-}
 form {
     margin: 0 auto;
-    width: 600px;
+    max-width: 600px; min-width:250px;
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
     font-weight: 600;
-    color: rgb(63, 67, 71)
+    color: rgb(63, 67, 71);
   }
   
   form div + div {
@@ -93,7 +21,7 @@ form {
   
   input, textarea {
     font: 1em sans-serif;
-    width: 500px;
+    width: 100%;
     box-sizing: border-box;
     border: 1px solid #999;
     border-radius: 8px;
@@ -108,7 +36,7 @@ form {
   }
   
   .button {
-    padding-left: 90px;
+    display: flex; justify-content: center;
   }
   
   button {
